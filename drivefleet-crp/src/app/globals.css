@@ -337,9 +337,14 @@ html.light .min-h-screen.bg-black {
   background-color: #ffffff !important;
 }
 
-html.light .min-h-screen.bg-black .text-white:not(.keep-dark *):not(.keep-dark-card *):not(button *):not(.btn *):not(a *),
-html.light .min-h-screen.bg-black .text-white\/80:not(.keep-dark *):not(.keep-dark-card *):not(button *):not(.btn *):not(a *),
-html.light .min-h-screen.bg-black .text-neutral-400:not(.keep-dark *):not(.keep-dark-card *):not(button *):not(.btn *):not(a *) {
+html.light h1:not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *),
+html.light h2:not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *),
+html.light h3:not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *),
+html.light h4:not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *),
+html.light h5:not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *),
+html.light h6:not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *),
+html.light p:not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *),
+html.light span:not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *):not(.material-symbols-outlined) {
   color: #111827 !important;
 }
 
