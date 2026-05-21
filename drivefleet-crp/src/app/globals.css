@@ -321,8 +321,12 @@ html.light footer.bg-black .text-orange-500 {
 /* Keep category dynamic image cards dark with white text */
 html.light .keep-dark-card,
 html.light .keep-dark-card * {
-  background-color: transparent !important;
   color: #ffffff !important;
+}
+
+html.light .keep-dark-card {
+  background-color: #0c0c0c !important;
+  border: 1px solid #262626 !important;
 }
 
 html.light .keep-dark-card .text-orange-500 {
@@ -451,17 +455,17 @@ html.light .bg-neutral-800 .text-orange-500 {
   color: #f97316 !important;
 }
 
-/* Input boxes & Select boxes styling inside white containers, EXCLUDING peer inputs */
-html.light input:not(.peer),
-html.light select,
-html.light textarea:not(.peer) {
+/* Input boxes & Select boxes styling inside white containers, EXCLUDING peer inputs and dark sections/footers */
+html.light input:not(.peer):not(.keep-dark *):not(footer *),
+html.light select:not(.keep-dark *):not(footer *),
+html.light textarea:not(.peer):not(.keep-dark *):not(footer *) {
   background-color: #f3f4f6 !important;
   color: #111827 !important;
   border: 1px solid #d1d5db !important;
 }
 
-html.light input:not(.peer)::placeholder,
-html.light textarea:not(.peer)::placeholder {
+html.light input:not(.peer):not(.keep-dark *):not(footer *)::placeholder,
+html.light textarea:not(.peer):not(.keep-dark *):not(footer *)::placeholder {
   color: #9ca3af !important;
 }
 

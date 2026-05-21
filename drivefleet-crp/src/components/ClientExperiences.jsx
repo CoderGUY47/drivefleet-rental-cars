@@ -122,7 +122,7 @@ export default function ClientExperiences() {
           >
             {testimonials.map((t) => (
               <SwiperSlide key={t.id} className="h-auto">
-                <div className="h-full bg-[#0c0c0c] border border-neutral-800 p-8 flex flex-col justify-between group hover:border-orange-500/50 transition-colors duration-300 relative">
+                <div className="h-full bg-[#0c0c0c] border border-neutral-800 p-8 flex flex-col justify-between group hover:border-orange-500/50 transition-colors duration-300 relative keep-dark-card">
                   {/* top accent line on hover */}
                   <div className="absolute top-0 left-0 w-full h-1 bg-neutral-800 group-hover:bg-orange-500 transition-colors duration-500" />
 
