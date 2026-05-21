@@ -333,6 +333,16 @@ html.light .light-white-bg {
   background-color: #ffffff !important;
 }
 
+html.light .min-h-screen.bg-black {
+  background-color: #ffffff !important;
+}
+
+html.light .min-h-screen.bg-black .text-white:not(.keep-dark *):not(.keep-dark-card *):not(button *):not(.btn *):not(a *),
+html.light .min-h-screen.bg-black .text-white\/80:not(.keep-dark *):not(.keep-dark-card *):not(button *):not(.btn *):not(a *),
+html.light .min-h-screen.bg-black .text-neutral-400:not(.keep-dark *):not(.keep-dark-card *):not(button *):not(.btn *):not(a *) {
+  color: #111827 !important;
+}
+
 html.light .keep-dark-card .text-orange-500 {
   color: #f97316 !important;
 }
