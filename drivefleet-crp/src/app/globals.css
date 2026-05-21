@@ -302,64 +302,120 @@ html.light, html.light body {
   color: #111827 !important;
 }
 
-/* backgrounds */
-html.light nav,
-html.light .bg-black,
-html.light .bg-\[\#0c0c0c\],
-html.light .bg-neutral-950,
-html.light .bg-neutral-900,
-html.light .bg-neutral-800,
-html.light .bg-neutral-950\/50,
-html.light .bg-black\/80,
-html.light .bg-black\/95 {
-  background-color: #ffffff !important;
-  color: #111827 !important;
+/* 1. KEEP DARK BACKGROUNDS AND LIGHT TEXT ON HERO BANNER, IMAGES, GALLERY CARDS AND SPECIAL SECTIONS */
+html.light .min-h-screen.bg-black,
+html.light .relative.w-full.min-h-screen.overflow-hidden.bg-black,
+html.light section.bg-black.relative:has(img.object-cover),
+html.light section:has(div[class*="bg-[url"]) {
+  background-color: #000000 !important;
 }
 
-/* text colors */
-html.light h1,
-html.light h2,
-html.light h3,
-html.light h4,
-html.light h5,
-html.light h6,
-html.light p,
-html.light span,
-html.light label,
-html.light .text-white,
-html.light .text-neutral-200,
-html.light .text-neutral-300,
-html.light .text-neutral-400,
-html.light .text-gray-300,
-html.light .text-gray-400,
-html.light .text-white\/80 {
-  color: #111827 !important;
+html.light .min-h-screen.bg-black *,
+html.light .relative.w-full.min-h-screen.overflow-hidden.bg-black *,
+html.light section.bg-black.relative:has(img.object-cover) *,
+html.light section:has(div[class*="bg-[url"]) * {
+  color: #ffffff !important;
 }
 
-html.light .text-neutral-500,
-html.light .text-gray-500 {
-  color: #6b7280 !important;
-}
-
-/* orange accents must remain glowing orange */
-html.light .text-orange-500 {
+/* Ensure the main heading and descriptions inside dark sections have glowing orange accent styling preserved */
+html.light section.bg-black.relative:has(img.object-cover) .text-orange-500,
+html.light section:has(div[class*="bg-[url"]) .text-orange-500,
+html.light .relative.w-full.min-h-screen.overflow-hidden.bg-black .text-orange-500 {
   color: #f97316 !important;
 }
 
-/* border overrides */
-html.light .border-white\/10,
-html.light .border-neutral-800,
-html.light .border-neutral-900 {
+/* 2. PROTECT ALL BUTTONS, HOVER EFFECTS, AND THEIR INNER ICONS/TEXTS FROM MODIFICATION */
+html.light button,
+html.light .btn,
+html.light a[class*="btn"],
+html.light a[class*="bg-gray-900"],
+html.light a[class*="bg-orange-500"],
+html.light button *,
+html.light .btn *,
+html.light a[class*="btn"] *,
+html.light a[class*="bg-gray-900"] *,
+html.light a[class*="bg-orange-500"] * {
+  color: inherit !important;
+  background-color: inherit !important;
+}
+
+/* 3. LIGHT MODE GENERAL LAYOUT COMPONENT OVERRIDES (NAVBAR, CARDS, BACKGROUND SECTIONS, FORMS) */
+html.light nav.bg-black\/80 {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+html.light nav.bg-black\/80 *,
+html.light nav.bg-black\/80 a,
+html.light nav.bg-black\/80 span {
+  color: #111827 !important;
+}
+
+html.light nav.bg-black\/80 a.text-orange-500 {
+  color: #f97316 !important;
+}
+
+/* Mobile responsive navigation panel override */
+html.light .md\:hidden.bg-black\/95 {
+  background-color: #ffffff !important;
+  border-top: 1px solid #e5e7eb !important;
+}
+
+html.light .md\:hidden.bg-black\/95 a {
+  color: #111827 !important;
+}
+
+/* Turn body/content background pages from black to beautiful white */
+html.light .w-full.bg-black:not(.min-h-screen) {
+  background-color: #f9fafb !important;
+}
+
+/* Standard content sections that should have clean white background with black text */
+html.light section:not(.relative:has(img.object-cover)):not(:has(div[class*="bg-[url"])) {
+  background-color: #ffffff !important;
   border-color: #e5e7eb !important;
 }
 
-/* form input styles */
+html.light section:not(.relative:has(img.object-cover)):not(:has(div[class*="bg-[url"])) h2,
+html.light section:not(.relative:has(img.object-cover)):not(:has(div[class*="bg-[url"])) h3,
+html.light section:not(.relative:has(img.object-cover)):not(:has(div[class*="bg-[url"])) h4,
+html.light section:not(.relative:has(img.object-cover)):not(:has(div[class*="bg-[url"])) p,
+html.light section:not(.relative:has(img.object-cover)):not(:has(div[class*="bg-[url"])) span:not(.material-symbols-outlined) {
+  color: #111827 !important;
+}
+
+/* Overriding cards and dynamic panels like forms, explore cars lists, etc. */
+html.light .bg-\[\#0c0c0c\],
+html.light .bg-neutral-950,
+html.light .bg-neutral-900,
+html.light .bg-neutral-800 {
+  background-color: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  color: #111827 !important;
+}
+
+html.light .bg-\[\#0c0c0c\] *,
+html.light .bg-neutral-950 *,
+html.light .bg-neutral-900 *,
+html.light .bg-neutral-800 * {
+  color: #111827 !important;
+}
+
+/* Maintain orange accents inside turned-white cards/forms */
+html.light .bg-\[\#0c0c0c\] .text-orange-500,
+html.light .bg-neutral-950 .text-orange-500,
+html.light .bg-neutral-900 .text-orange-500,
+html.light .bg-neutral-800 .text-orange-500 {
+  color: #f97316 !important;
+}
+
+/* Input boxes & Select boxes styling inside white containers */
 html.light input,
 html.light select,
 html.light textarea {
   background-color: #f3f4f6 !important;
   color: #111827 !important;
-  border-color: #d1d5db !important;
+  border: 1px solid #d1d5db !important;
 }
 
 html.light input::placeholder,
@@ -367,10 +423,24 @@ html.light textarea::placeholder {
   color: #9ca3af !important;
 }
 
-/* client experiences cards and dashboard overlays styling */
-html.light .bg-\[\#0c0c0c\],
-html.light .bg-neutral-950 {
-  background-color: #ffffff !important;
+/* VIP pickups/concierge boxes overlay inside AboutUs and others */
+html.light .bg-white\/5 {
+  background-color: #f9fafb !important;
   border: 1px solid #e5e7eb !important;
+}
+
+html.light .bg-white\/5 * {
+  color: #111827 !important;
+}
+
+/* Orange/status badges remain glowing custom colors */
+html.light .absolute.bg-\[\#1d1d1d\] {
+  background-color: #f3f4f6 !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+html.light .absolute.bg-orange-500 {
+  background-color: #f97316 !important;
+  color: #ffffff !important;
 }
 
