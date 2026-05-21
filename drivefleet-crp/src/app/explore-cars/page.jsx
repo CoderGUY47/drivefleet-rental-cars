@@ -67,12 +67,23 @@ export default function ExploreCarsPage() {
     }
   }, [currentUser, checkingAuth, router]);
 
-  // load cars on first run or when url changes
+  // load cars on search or category changes
   useEffect(() => {
-    if (currentUser) {
-      fetchCars(initialSearch, initialCategory);
+    if (!currentUser) return;
+
+    // instant fetch for category changes
+    if (search === initialSearch && category !== initialCategory) {
+      fetchCars(search, category);
+      return;
     }
-  }, [currentUser, initialSearch, initialCategory]);
+
+    // debounced fetch for typing in the search box
+    const delayDebounceFn = setTimeout(() => {
+      fetchCars(search, category);
+    }, 300);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [currentUser, search, category]);
 
   const handleApplyFilters = (e) => {
     if (e) e.preventDefault();
