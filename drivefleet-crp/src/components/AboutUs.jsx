@@ -1,3 +1,4 @@
+// Company branding and mission description
 "use client";
 
 import Image from "next/image";
