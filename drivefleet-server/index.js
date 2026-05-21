@@ -1,3 +1,4 @@
+// Reservation processing endpoints
 // Vehicles pagination and search query processing
 // JWKS authentication gatekeeper
 // MongoDB client and cluster connection validation
