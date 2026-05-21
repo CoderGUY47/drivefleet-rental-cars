@@ -9,7 +9,7 @@ export default function Banner() {
   const router = useRouter();
 
   return (
-    <div className="relative w-full min-h-screen overflow-hidden bg-black">
+    <div className="relative w-full min-h-screen overflow-hidden bg-black keep-dark">
       <Image
         src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=1600&auto=format&fit=crop&q=80"
         alt="DriveFleet Hero"

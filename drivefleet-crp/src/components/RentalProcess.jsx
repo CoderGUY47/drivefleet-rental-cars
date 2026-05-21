@@ -28,7 +28,7 @@ const steps = [
 
 export default function RentalProcess() {
   return (
-    <section className="py-24 bg-black border-t border-neutral-900 relative overflow-hidden">
+    <section className="py-24 bg-black border-t border-neutral-900 relative overflow-hidden keep-dark">
       <Image
         src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=20"
         alt="Background premium car layout"

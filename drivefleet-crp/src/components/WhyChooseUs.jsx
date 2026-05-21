@@ -25,7 +25,7 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="py-24 border-t border-neutral-900 relative overflow-hidden">
+    <section className="py-24 border-t border-neutral-900 relative overflow-hidden keep-dark">
       {/* full-width background image decoration */}
       <div className="absolute inset-0 bg-[url('/assets/vecteezy_two-classic-cars-on-black-background_31192356.jpg')] bg-cover bg-center opacity-20" />
       <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 to-black/80" />

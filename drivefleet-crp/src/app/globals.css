@@ -302,25 +302,28 @@ html.light, html.light body {
   color: #111827 !important;
 }
 
-/* 1. KEEP DARK BACKGROUNDS AND LIGHT TEXT ON HERO BANNER, IMAGES, GALLERY CARDS AND SPECIAL SECTIONS */
-html.light .min-h-screen.bg-black,
-html.light .relative.w-full.min-h-screen.overflow-hidden.bg-black,
-html.light section.bg-black.relative:has(img.object-cover),
-html.light section:has(div[class*="bg-[url"]) {
+/* 1. KEEP DARK BACKGROUNDS AND LIGHT TEXT ON SPECIAL DECORATED SECTIONS & CUSTOM IMAGE CARDS */
+html.light .keep-dark,
+html.light .keep-dark *,
+html.light footer.bg-black,
+html.light footer.bg-black * {
   background-color: #000000 !important;
-}
-
-html.light .min-h-screen.bg-black *,
-html.light .relative.w-full.min-h-screen.overflow-hidden.bg-black *,
-html.light section.bg-black.relative:has(img.object-cover) *,
-html.light section:has(div[class*="bg-[url"]) * {
   color: #ffffff !important;
 }
 
-/* Ensure the main heading and descriptions inside dark sections have glowing orange accent styling preserved */
-html.light section.bg-black.relative:has(img.object-cover) .text-orange-500,
-html.light section:has(div[class*="bg-[url"]) .text-orange-500,
-html.light .relative.w-full.min-h-screen.overflow-hidden.bg-black .text-orange-500 {
+html.light .keep-dark .text-orange-500,
+html.light footer.bg-black .text-orange-500 {
+  color: #f97316 !important;
+}
+
+/* Keep category dynamic image cards dark with white text */
+html.light .keep-dark-card,
+html.light .keep-dark-card * {
+  background-color: transparent !important;
+  color: #ffffff !important;
+}
+
+html.light .keep-dark-card .text-orange-500 {
   color: #f97316 !important;
 }
 
@@ -356,21 +359,21 @@ html.light .w-full.bg-black:not(.min-h-screen) {
 }
 
 /* Standard content sections that should have clean white background with black text */
-html.light section:not(.relative:has(img.object-cover)):not(:has(div[class*="bg-[url"])) {
+html.light section:not(.keep-dark) {
   background-color: #ffffff !important;
   border-color: #e5e7eb !important;
 }
 
-html.light section:not(.relative:has(img.object-cover)):not(:has(div[class*="bg-[url"])) h2,
-html.light section:not(.relative:has(img.object-cover)):not(:has(div[class*="bg-[url"])) h3,
-html.light section:not(.relative:has(img.object-cover)):not(:has(div[class*="bg-[url"])) h4,
-html.light section:not(.relative:has(img.object-cover)):not(:has(div[class*="bg-[url"])) p,
-html.light section:not(.relative:has(img.object-cover)):not(:has(div[class*="bg-[url"])) span:not(.material-symbols-outlined) {
+html.light section:not(.keep-dark) h2,
+html.light section:not(.keep-dark) h3,
+html.light section:not(.keep-dark) h4,
+html.light section:not(.keep-dark) p,
+html.light section:not(.keep-dark) span:not(button *):not(a *):not(.material-symbols-outlined) {
   color: #111827 !important;
 }
 
 /* Overriding cards and dynamic panels like forms, explore cars lists, etc. */
-html.light .bg-\[\#0c0c0c\],
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card),
 html.light .bg-neutral-950,
 html.light .bg-neutral-900,
 html.light .bg-neutral-800 {
@@ -380,11 +383,11 @@ html.light .bg-neutral-800 {
 }
 
 /* Turn nested text elements (h2, h3, h4, p, span) inside white containers black, BUT DO NOT touch button/anchor text */
-html.light .bg-\[\#0c0c0c\] h2,
-html.light .bg-\[\#0c0c0c\] h3,
-html.light .bg-\[\#0c0c0c\] h4,
-html.light .bg-\[\#0c0c0c\] p,
-html.light .bg-\[\#0c0c0c\] span:not(button *):not(a *):not(.material-symbols-outlined),
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) h2,
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) h3,
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) h4,
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) p,
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) span:not(button *):not(a *):not(.material-symbols-outlined),
 
 html.light .bg-neutral-950 h2,
 html.light .bg-neutral-950 h3,
@@ -407,19 +410,31 @@ html.light .bg-neutral-800 span:not(button *):not(a *):not(.material-symbols-out
 }
 
 /* Force white text class overrides to render black inside turned-white containers */
-html.light .bg-\[\#0c0c0c\] .text-white,
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) .text-white,
 html.light .bg-neutral-950 .text-white,
 html.light .bg-neutral-900 .text-white,
 html.light .bg-neutral-800 .text-white,
-html.light .bg-\[\#0c0c0c\] .text-white\/80,
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) .text-white\/80,
 html.light .bg-neutral-950 .text-white\/80,
 html.light .bg-neutral-900 .text-white\/80,
-html.light .bg-neutral-800 .text-white\/80 {
+html.light .bg-neutral-800 .text-white\/80,
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) .text-neutral-200,
+html.light .bg-neutral-950 .text-neutral-200,
+html.light .bg-neutral-900 .text-neutral-200,
+html.light .bg-neutral-800 .text-neutral-200,
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) .text-neutral-300,
+html.light .bg-neutral-950 .text-neutral-300,
+html.light .bg-neutral-900 .text-neutral-300,
+html.light .bg-neutral-800 .text-neutral-300,
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) .text-neutral-400,
+html.light .bg-neutral-950 .text-neutral-400,
+html.light .bg-neutral-900 .text-neutral-400,
+html.light .bg-neutral-800 .text-neutral-400 {
   color: #111827 !important;
 }
 
 /* Maintain orange accents inside turned-white cards/forms */
-html.light .bg-\[\#0c0c0c\] .text-orange-500,
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) .text-orange-500,
 html.light .bg-neutral-950 .text-orange-500,
 html.light .bg-neutral-900 .text-orange-500,
 html.light .bg-neutral-800 .text-orange-500 {

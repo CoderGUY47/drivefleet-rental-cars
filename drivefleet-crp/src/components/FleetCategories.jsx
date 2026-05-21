@@ -53,7 +53,7 @@ export default function FleetCategories() {
             <Link
               key={cat.name}
               href={`/explore-cars?category=${cat.name}`}
-              className="group relative h-[150px] overflow-hidden rounded-none border border-neutral-800 block bg-[#0c0c0c]"
+              className="group relative h-[150px] overflow-hidden rounded-none border border-neutral-800 block bg-[#0c0c0c] keep-dark-card"
             >
               {/* background image decoration */}
               <div className="absolute inset-0 w-full h-full">
