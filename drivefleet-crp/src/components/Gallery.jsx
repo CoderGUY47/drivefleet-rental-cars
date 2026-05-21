@@ -50,7 +50,7 @@ export default function Gallery() {
   const [activeImage, setActiveImage] = useState(null);
 
   return (
-    <section className="py-24 bg-black border-t border-neutral-900 relative overflow-hidden">
+    <section className="py-24 bg-black border-t border-neutral-900 relative overflow-hidden keep-dark">
       {/* background gradient glow effect */}
       <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-orange-500/5 blur-[150px] pointer-events-none" />
 

@@ -451,18 +451,32 @@ html.light .bg-neutral-800 .text-orange-500 {
   color: #f97316 !important;
 }
 
-/* Input boxes & Select boxes styling inside white containers */
-html.light input,
+/* Input boxes & Select boxes styling inside white containers, EXCLUDING peer inputs */
+html.light input:not(.peer),
 html.light select,
-html.light textarea {
+html.light textarea:not(.peer) {
   background-color: #f3f4f6 !important;
   color: #111827 !important;
   border: 1px solid #d1d5db !important;
 }
 
-html.light input::placeholder,
-html.light textarea::placeholder {
+html.light input:not(.peer)::placeholder,
+html.light textarea:not(.peer)::placeholder {
   color: #9ca3af !important;
+}
+
+/* Maintain floating/under-lined peer inputs transparency and elegant bottom border in Light Mode */
+html.light input.peer,
+html.light textarea.peer {
+  background-color: transparent !important;
+  border: none !important;
+  border-bottom: 2px solid #e5e7eb !important;
+  color: #111827 !important;
+}
+
+html.light input.peer:focus,
+html.light textarea.peer:focus {
+  border-bottom: 2px solid #f97316 !important;
 }
 
 /* VIP pickups/concierge boxes overlay inside AboutUs and others */
