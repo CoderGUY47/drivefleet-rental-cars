@@ -308,8 +308,8 @@ html.light footer.bg-black {
   background-color: #000000 !important;
 }
 
-html.light .keep-dark *,
-html.light footer.bg-black * {
+html.light .keep-dark *:not(button):not(button *):not(.btn):not(.btn *):not([class*="text-black"]):not([class*="text-black"] *),
+html.light footer.bg-black *:not(button):not(button *):not(.btn):not(.btn *):not([class*="text-black"]):not([class*="text-black"] *) {
   color: #ffffff !important;
 }
 
