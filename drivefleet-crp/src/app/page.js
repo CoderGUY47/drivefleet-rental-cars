@@ -1,3 +1,4 @@
+// Main homepage routing index
 
 import Banner from "../components/Banner";
 import AboutUs from "../components/AboutUs";
