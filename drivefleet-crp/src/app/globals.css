@@ -324,22 +324,7 @@ html.light .relative.w-full.min-h-screen.overflow-hidden.bg-black .text-orange-5
   color: #f97316 !important;
 }
 
-/* 2. PROTECT ALL BUTTONS, HOVER EFFECTS, AND THEIR INNER ICONS/TEXTS FROM MODIFICATION */
-html.light button,
-html.light .btn,
-html.light a[class*="btn"],
-html.light a[class*="bg-gray-900"],
-html.light a[class*="bg-orange-500"],
-html.light button *,
-html.light .btn *,
-html.light a[class*="btn"] *,
-html.light a[class*="bg-gray-900"] *,
-html.light a[class*="bg-orange-500"] * {
-  color: inherit !important;
-  background-color: inherit !important;
-}
-
-/* 3. LIGHT MODE GENERAL LAYOUT COMPONENT OVERRIDES (NAVBAR, CARDS, BACKGROUND SECTIONS, FORMS) */
+/* 2. LIGHT MODE GENERAL LAYOUT COMPONENT OVERRIDES (NAVBAR, CARDS, BACKGROUND SECTIONS, FORMS) */
 html.light nav.bg-black\/80 {
   background-color: #ffffff !important;
   border-bottom: 1px solid #e5e7eb !important;
@@ -394,10 +379,42 @@ html.light .bg-neutral-800 {
   color: #111827 !important;
 }
 
-html.light .bg-\[\#0c0c0c\] *,
-html.light .bg-neutral-950 *,
-html.light .bg-neutral-900 *,
-html.light .bg-neutral-800 * {
+/* Turn nested text elements (h2, h3, h4, p, span) inside white containers black, BUT DO NOT touch button/anchor text */
+html.light .bg-\[\#0c0c0c\] h2,
+html.light .bg-\[\#0c0c0c\] h3,
+html.light .bg-\[\#0c0c0c\] h4,
+html.light .bg-\[\#0c0c0c\] p,
+html.light .bg-\[\#0c0c0c\] span:not(button *):not(a *):not(.material-symbols-outlined),
+
+html.light .bg-neutral-950 h2,
+html.light .bg-neutral-950 h3,
+html.light .bg-neutral-950 h4,
+html.light .bg-neutral-950 p,
+html.light .bg-neutral-950 span:not(button *):not(a *):not(.material-symbols-outlined),
+
+html.light .bg-neutral-900 h2,
+html.light .bg-neutral-900 h3,
+html.light .bg-neutral-900 h4,
+html.light .bg-neutral-900 p,
+html.light .bg-neutral-900 span:not(button *):not(a *):not(.material-symbols-outlined),
+
+html.light .bg-neutral-800 h2,
+html.light .bg-neutral-800 h3,
+html.light .bg-neutral-800 h4,
+html.light .bg-neutral-800 p,
+html.light .bg-neutral-800 span:not(button *):not(a *):not(.material-symbols-outlined) {
+  color: #111827 !important;
+}
+
+/* Force white text class overrides to render black inside turned-white containers */
+html.light .bg-\[\#0c0c0c\] .text-white,
+html.light .bg-neutral-950 .text-white,
+html.light .bg-neutral-900 .text-white,
+html.light .bg-neutral-800 .text-white,
+html.light .bg-\[\#0c0c0c\] .text-white\/80,
+html.light .bg-neutral-950 .text-white\/80,
+html.light .bg-neutral-900 .text-white\/80,
+html.light .bg-neutral-800 .text-white\/80 {
   color: #111827 !important;
 }
 
@@ -429,7 +446,10 @@ html.light .bg-white\/5 {
   border: 1px solid #e5e7eb !important;
 }
 
-html.light .bg-white\/5 * {
+html.light .bg-white\/5 h4,
+html.light .bg-white\/5 p,
+html.light .bg-white\/5 .text-white,
+html.light .bg-white\/5 .text-white\/70 {
   color: #111827 !important;
 }
 
