@@ -1,3 +1,4 @@
+// Client-side booking tracking layout
 "use client";
 
 import { useState } from "react";
