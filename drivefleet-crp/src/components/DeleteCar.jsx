@@ -1,3 +1,4 @@
+// Dynamic deletion handler for client inventory
 "use client";
 
 import { useState } from "react";
