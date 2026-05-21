@@ -1,3 +1,4 @@
+// JWKS authentication gatekeeper
 // MongoDB client and cluster connection validation
 // Root endpoint initialization
 // Initialization of Express gateway
