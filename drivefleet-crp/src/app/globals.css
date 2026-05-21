@@ -364,77 +364,85 @@ html.light section:not(.keep-dark) {
   border-color: #e5e7eb !important;
 }
 
-html.light section:not(.keep-dark) h2,
-html.light section:not(.keep-dark) h3,
-html.light section:not(.keep-dark) h4,
-html.light section:not(.keep-dark) p,
-html.light section:not(.keep-dark) span:not(button *):not(a *):not(.material-symbols-outlined) {
+html.light section:not(.keep-dark) h2:not(.keep-dark-card *),
+html.light section:not(.keep-dark) h3:not(.keep-dark-card *),
+html.light section:not(.keep-dark) h4:not(.keep-dark-card *),
+html.light section:not(.keep-dark) p:not(.keep-dark-card *),
+html.light section:not(.keep-dark) span:not(button *):not(a *):not(.material-symbols-outlined):not(.keep-dark-card *) {
   color: #111827 !important;
 }
 
 /* Overriding cards and dynamic panels like forms, explore cars lists, etc. */
-html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card),
-html.light .bg-neutral-950,
-html.light .bg-neutral-900,
-html.light .bg-neutral-800 {
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card):not(.keep-dark *),
+html.light .bg-neutral-950:not(.keep-dark *),
+html.light .bg-neutral-900:not(.keep-dark *),
+html.light .bg-neutral-800:not(.keep-dark *) {
   background-color: #ffffff !important;
   border: 1px solid #e5e7eb !important;
   color: #111827 !important;
 }
 
 /* Turn nested text elements (h2, h3, h4, p, span) inside white containers black, BUT DO NOT touch button/anchor text */
-html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) h2,
-html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) h3,
-html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) h4,
-html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) p,
-html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) span:not(button *):not(a *):not(.material-symbols-outlined),
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card):not(.keep-dark *) h2,
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card):not(.keep-dark *) h3,
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card):not(.keep-dark *) h4,
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card):not(.keep-dark *) p,
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card):not(.keep-dark *) span:not(button *):not(a *):not(.material-symbols-outlined),
 
-html.light .bg-neutral-950 h2,
-html.light .bg-neutral-950 h3,
-html.light .bg-neutral-950 h4,
-html.light .bg-neutral-950 p,
-html.light .bg-neutral-950 span:not(button *):not(a *):not(.material-symbols-outlined),
+html.light .bg-neutral-950:not(.keep-dark *) h2,
+html.light .bg-neutral-950:not(.keep-dark *) h3,
+html.light .bg-neutral-950:not(.keep-dark *) h4,
+html.light .bg-neutral-950:not(.keep-dark *) p,
+html.light .bg-neutral-950:not(.keep-dark *) span:not(button *):not(a *):not(.material-symbols-outlined),
 
-html.light .bg-neutral-900 h2,
-html.light .bg-neutral-900 h3,
-html.light .bg-neutral-900 h4,
-html.light .bg-neutral-900 p,
-html.light .bg-neutral-900 span:not(button *):not(a *):not(.material-symbols-outlined),
+html.light .bg-neutral-900:not(.keep-dark *) h2,
+html.light .bg-neutral-900:not(.keep-dark *) h3,
+html.light .bg-neutral-900:not(.keep-dark *) h4,
+html.light .bg-neutral-900:not(.keep-dark *) p,
+html.light .bg-neutral-900:not(.keep-dark *) span:not(button *):not(a *):not(.material-symbols-outlined),
 
-html.light .bg-neutral-800 h2,
-html.light .bg-neutral-800 h3,
-html.light .bg-neutral-800 h4,
-html.light .bg-neutral-800 p,
-html.light .bg-neutral-800 span:not(button *):not(a *):not(.material-symbols-outlined) {
+html.light .bg-neutral-800:not(.keep-dark *) h2,
+html.light .bg-neutral-800:not(.keep-dark *) h3,
+html.light .bg-neutral-800:not(.keep-dark *) h4,
+html.light .bg-neutral-800:not(.keep-dark *) p,
+html.light .bg-neutral-800:not(.keep-dark *) span:not(button *):not(a *):not(.material-symbols-outlined) {
   color: #111827 !important;
 }
 
-/* Force white text class overrides to render black inside turned-white containers */
-html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) .text-white,
-html.light .bg-neutral-950 .text-white,
-html.light .bg-neutral-900 .text-white,
-html.light .bg-neutral-800 .text-white,
-html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) .text-white\/80,
-html.light .bg-neutral-950 .text-white\/80,
-html.light .bg-neutral-900 .text-white\/80,
-html.light .bg-neutral-800 .text-white\/80,
-html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) .text-neutral-200,
-html.light .bg-neutral-950 .text-neutral-200,
-html.light .bg-neutral-900 .text-neutral-200,
-html.light .bg-neutral-800 .text-neutral-200,
-html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) .text-neutral-300,
-html.light .bg-neutral-950 .text-neutral-300,
-html.light .bg-neutral-900 .text-neutral-300,
-html.light .bg-neutral-800 .text-neutral-300,
-html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) .text-neutral-400,
-html.light .bg-neutral-950 .text-neutral-400,
-html.light .bg-neutral-900 .text-neutral-400,
-html.light .bg-neutral-800 .text-neutral-400 {
+/* Force white text class overrides to render black inside turned-white containers, EXCLUDING buttons/links */
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card):not(.keep-dark *) .text-white:not(button *):not(.btn *):not(a[class*="inline-flex"] *),
+html.light .bg-neutral-950:not(.keep-dark *) .text-white:not(button *):not(.btn *):not(a[class*="inline-flex"] *),
+html.light .bg-neutral-900:not(.keep-dark *) .text-white:not(button *):not(.btn *):not(a[class*="inline-flex"] *),
+html.light .bg-neutral-800:not(.keep-dark *) .text-white:not(button *):not(.btn *):not(a[class*="inline-flex"] *),
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card):not(.keep-dark *) .text-white\/80:not(button *):not(.btn *):not(a[class*="inline-flex"] *),
+html.light .bg-neutral-950:not(.keep-dark *) .text-white\/80:not(button *):not(.btn *):not(a[class*="inline-flex"] *),
+html.light .bg-neutral-900:not(.keep-dark *) .text-white\/80:not(button *):not(.btn *):not(a[class*="inline-flex"] *),
+html.light .bg-neutral-800:not(.keep-dark *) .text-white\/80:not(button *):not(.btn *):not(a[class*="inline-flex"] *),
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card):not(.keep-dark *) .text-neutral-200,
+html.light .bg-neutral-950:not(.keep-dark *) .text-neutral-200,
+html.light .bg-neutral-900:not(.keep-dark *) .text-neutral-200,
+html.light .bg-neutral-800:not(.keep-dark *) .text-neutral-200,
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card):not(.keep-dark *) .text-neutral-300,
+html.light .bg-neutral-950:not(.keep-dark *) .text-neutral-300,
+html.light .bg-neutral-900:not(.keep-dark *) .text-neutral-300,
+html.light .bg-neutral-800:not(.keep-dark *) .text-neutral-300,
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card):not(.keep-dark *) .text-neutral-400,
+html.light .bg-neutral-950:not(.keep-dark *) .text-neutral-400,
+html.light .bg-neutral-900:not(.keep-dark *) .text-neutral-400,
+html.light .bg-neutral-800:not(.keep-dark *) .text-neutral-400 {
   color: #111827 !important;
+}
+
+/* Always force dark button texts to stay white */
+html.light button *,
+html.light .btn *,
+html.light [class*="bg-gray-900"] *,
+html.light [class*="bg-neutral-900"] * {
+  color: #ffffff !important;
 }
 
 /* Maintain orange accents inside turned-white cards/forms */
-html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card) .text-orange-500,
+html.light .bg-\[\#0c0c0c\]:not(.keep-dark-card):not(.keep-dark *) .text-orange-500,
 html.light .bg-neutral-950 .text-orange-500,
 html.light .bg-neutral-900 .text-orange-500,
 html.light .bg-neutral-800 .text-orange-500 {
