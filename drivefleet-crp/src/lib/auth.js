@@ -1,3 +1,4 @@
+// OAuth social login configs
 // Better Auth database client setup
 import { betterAuth } from "better-auth";
 import { MongoClient } from "mongodb";
