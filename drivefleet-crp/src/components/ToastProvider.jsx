@@ -1,3 +1,4 @@
+// Toast notifications configuration provider
 "use client";
 
 import { ToastContainer } from "react-toastify";
