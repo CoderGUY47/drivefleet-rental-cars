@@ -24,6 +24,29 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
+  const [theme, setTheme] = useState("dark");
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    setTheme(savedTheme);
+    if (savedTheme === "light") {
+      document.documentElement.classList.add("light");
+    } else {
+      document.documentElement.classList.remove("light");
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+    localStorage.setItem("theme", nextTheme);
+    if (nextTheme === "light") {
+      document.documentElement.classList.add("light");
+    } else {
+      document.documentElement.classList.remove("light");
+    }
+  };
+
   const { data: session } = authClient.useSession();
   const user = session?.user;
 
@@ -103,6 +126,72 @@ export default function Navbar() {
 
           {/* secondary actions and session state */}
           <div className="flex items-center gap-2 sm:gap-4">
+            {/* Theme Toggle Switch */}
+            <div className="flex items-center mr-1">
+              <label className="switch scale-75 sm:scale-90 origin-right">
+                <input 
+                  id="theme-toggle-input" 
+                  type="checkbox" 
+                  checked={theme === "dark"} 
+                  onChange={toggleTheme} 
+                />
+                <div className="slider round">
+                  <div className="sun-moon">
+                    <svg id="moon-dot-1" className="moon-dot" viewBox="0 0 100 100">
+                      <circle cx={50} cy={50} r={50} />
+                    </svg>
+                    <svg id="moon-dot-2" className="moon-dot" viewBox="0 0 100 100">
+                      <circle cx={50} cy={50} r={50} />
+                    </svg>
+                    <svg id="moon-dot-3" className="moon-dot" viewBox="0 0 100 100">
+                      <circle cx={50} cy={50} r={50} />
+                    </svg>
+                    <svg id="light-ray-1" className="light-ray" viewBox="0 0 100 100">
+                      <circle cx={50} cy={50} r={50} />
+                    </svg>
+                    <svg id="light-ray-2" className="light-ray" viewBox="0 0 100 100">
+                      <circle cx={50} cy={50} r={50} />
+                    </svg>
+                    <svg id="light-ray-3" className="light-ray" viewBox="0 0 100 100">
+                      <circle cx={50} cy={50} r={50} />
+                    </svg>
+                    <svg id="cloud-1" className="cloud-dark" viewBox="0 0 100 100">
+                      <circle cx={50} cy={50} r={50} />
+                    </svg>
+                    <svg id="cloud-2" className="cloud-dark" viewBox="0 0 100 100">
+                      <circle cx={50} cy={50} r={50} />
+                    </svg>
+                    <svg id="cloud-3" className="cloud-dark" viewBox="0 0 100 100">
+                      <circle cx={50} cy={50} r={50} />
+                    </svg>
+                    <svg id="cloud-4" className="cloud-light" viewBox="0 0 100 100">
+                      <circle cx={50} cy={50} r={50} />
+                    </svg>
+                    <svg id="cloud-5" className="cloud-light" viewBox="0 0 100 100">
+                      <circle cx={50} cy={50} r={50} />
+                    </svg>
+                    <svg id="cloud-6" className="cloud-light" viewBox="0 0 100 100">
+                      <circle cx={50} cy={50} r={50} />
+                    </svg>
+                  </div>
+                  <div className="stars">
+                    <svg id="star-1" className="star" viewBox="0 0 20 20">
+                      <path d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z" />
+                    </svg>
+                    <svg id="star-2" className="star" viewBox="0 0 20 20">
+                      <path d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z" />
+                    </svg>
+                    <svg id="star-3" className="star" viewBox="0 0 20 20">
+                      <path d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z" />
+                    </svg>
+                    <svg id="star-4" className="star" viewBox="0 0 20 20">
+                      <path d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z" />
+                    </svg>
+                  </div>
+                </div>
+              </label>
+            </div>
+
             <div className="flex items-center justify-end gap-3 sm:gap-4">
               {user ? (
                 <div className="relative" ref={dropdownRef}>
