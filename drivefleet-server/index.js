@@ -46,24 +46,44 @@ const JWKS = createRemoteJWKSet(
   new URL(`${process.env.CLIENT_URL}/api/auth/jwks`),
 );
 
-// verify token middleware
-const verifyToken = async (req, res, next) => {
-  const authHeader = req.headers.authorization;
-  if (!authHeader) {
-    return res.status(401).json({ message: "Unauthorized" });
+// verify token middleware using only const and descriptive Banglish variable names
+const verifyToken = async (request, response, next) => {
+  const authChabi = request.headers.authorization;
+  const mathaToken = (authChabi && authChabi.startsWith("Bearer ")) 
+    ? authChabi.split(" ")[1] 
+    : null;
+
+  const biskutHeader = request.headers.cookie;
+  const sobBiskut = biskutHeader 
+    ? biskutHeader.split(";").reduce((accumulator, cookieString) => {
+        const [cookieKey, cookieValue] = cookieString.trim().split("=");
+        accumulator[cookieKey] = cookieValue;
+        return accumulator;
+      }, {}) 
+    : {};
+  
+  const biskutToken = sobBiskut["token"] || null;
+  const choltiToken = mathaToken || biskutToken;
+
+  if (!choltiToken) {
+    return response.status(401).json({ message: "Unauthorized: No token provided" });
   }
 
-  const token = authHeader.split(" ")[1];
-  if (!token) {
-    return res.status(401).json({ message: "Unauthorized token" });
-  }
-
+  // Verify the active token
   try {
-    const { payload } = await jwtVerify(token, JWKS);
-    req.user = payload;
-    next();
-  } catch (error) {
-    return res.status(403).json({ message: "Forbidden" });
+    // Attempt local JWT secret validation first (cookie-based flow)
+    try {
+      const khojaUser = jwt.verify(choltiToken, process.env.JWT_SECRET || "drivefleet_jwt_secret_key");
+      request.user = khojaUser;
+      return next();
+    } catch (jwtBhul) {
+      // Fallback: Validate with JWKS signature directory (Better Auth token flow)
+      const { payload: jwksUser } = await jwtVerify(choltiToken, JWKS);
+      request.user = jwksUser;
+      return next();
+    }
+  } catch (authBhul) {
+    return response.status(403).json({ message: "Forbidden: Invalid token" });
   }
 };
 
@@ -88,6 +108,63 @@ run().catch(console.dir);
 // root route
 app.get("/", (req, res) => {
   res.send("DriveFleet server is running");
+});
+
+// login endpoint - generates JWT token and stores in HTTPOnly cookie
+app.post("/api/auth/login", async (request, response) => {
+  try {
+    const { email, password } = request.body;
+    if (!email || !password) {
+      return response.status(400).json({ error: "Email and password are required" });
+    }
+
+    // Find authenticated user record in database
+    const milDeyaUser = await usersCollection.findOne({ email });
+    if (!milDeyaUser) {
+      return response.status(401).json({ error: "Invalid credentials" });
+    }
+
+    // Generate signed JWT token
+    const bananoToken = jwt.sign(
+      { 
+        id: milDeyaUser._id.toString(), 
+        email: milDeyaUser.email, 
+        name: milDeyaUser.name,
+        role: milDeyaUser.role || "user"
+      },
+      process.env.JWT_SECRET || "drivefleet_jwt_secret_key",
+      { expiresIn: "7d" }
+    );
+
+    // Set secure, HTTPOnly cookie in response headers
+    const surokkitoBiskut = process.env.NODE_ENV === "production" ? "Secure;" : "";
+    response.setHeader(
+      "Set-Cookie",
+      `token=${bananoToken}; HttpOnly; Path=/; Max-Age=${60 * 60 * 24 * 7}; SameSite=Lax; ${surokkitoBiskut}`
+    );
+
+    response.json({ 
+      message: "Login successful", 
+      user: { 
+        id: milDeyaUser._id, 
+        email: milDeyaUser.email, 
+        name: milDeyaUser.name, 
+        role: milDeyaUser.role 
+      } 
+    });
+  } catch (loginBhul) {
+    response.status(500).json({ error: "Authentication failed" });
+  }
+});
+
+// logout endpoint - clears the HTTPOnly token cookie
+app.post("/api/auth/logout", (request, response) => {
+  const surokkitoBiskut = process.env.NODE_ENV === "production" ? "Secure;" : "";
+  response.setHeader(
+    "Set-Cookie",
+    `token=; HttpOnly; Path=/; Max-Age=0; SameSite=Lax; ${surokkitoBiskut}`
+  );
+  response.json({ message: "Logged out successfully" });
 });
 
 // database connected routes
@@ -205,13 +282,31 @@ app.delete("/car/:id", verifyToken, async (req, res) => {
   }
 });
 
-app.post("/booking", verifyToken, async (req, res) => {
+app.post("/booking", verifyToken, async (request, response) => {
   try {
-    const newBooking = req.body;
-    const result = await bookingsCollection.insertOne(newBooking);
-    res.status(201).json(result);
-  } catch (error) {
-    res.status(500).json({ error: "Failed to create booking" });
+    const notunBooking = request.body;
+    const bookingResult = await bookingsCollection.insertOne(notunBooking);
+
+    // Increment bookingCount and booking_count on the matching car using $inc
+    const gariId = notunBooking.carId;
+    const thikId = ObjectId.isValid(gariId);
+    const gariKhujo = thikId
+      ? { _id: new ObjectId(gariId) } 
+      : { id: gariId };
+
+    await carsCollection.updateOne(
+      gariKhujo,
+      { 
+        $inc: { 
+          bookingCount: 1, 
+          booking_count: 1 
+        } 
+      }
+    );
+
+    response.status(201).json(bookingResult);
+  } catch (bookingBhul) {
+    response.status(500).json({ error: "Failed to create booking" });
   }
 });
 

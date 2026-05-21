@@ -162,10 +162,17 @@ const ExploreCarsPage = async ({ searchParams }) => {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {cars.map((car) => (
-              <CarCard key={car._id || car.id} car={car} />
-            ))}
+          <div className="space-y-6">
+            <div className="flex justify-between items-center pb-4 border-b border-neutral-900 mb-2">
+              <p className="text-xs uppercase tracking-widest text-neutral-400 font-bold">
+                Available Cars: <span className="text-orange-500 font-black">{cars.length}</span>
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {cars.map((car) => (
+                <CarCard key={car._id || car.id} car={car} />
+              ))}
+            </div>
           </div>
         )}
 
