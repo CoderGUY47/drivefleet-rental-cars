@@ -329,6 +329,10 @@ html.light .keep-dark-card {
   border: 1px solid #262626 !important;
 }
 
+html.light .light-white-bg {
+  background-color: #ffffff !important;
+}
+
 html.light .keep-dark-card .text-orange-500 {
   color: #f97316 !important;
 }

@@ -5,6 +5,7 @@ import CarCard from "@/components/CarCard";
 import { useRouter, useSearchParams } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
+import Loading from "@/app/loading";
 
 export default function ExploreCarsPage() {
   const router = useRouter();
@@ -105,11 +106,7 @@ export default function ExploreCarsPage() {
   const categories = ["All", "Sedan", "SUV", "Electric", "Luxury"];
 
   if (checkingAuth || (!currentUser && !checkingAuth)) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-black">
-        <div className="w-12 h-12 border-4 border-white/10 border-t-orange-500 rounded-full animate-spin" />
-      </div>
-    );
+    return <Loading />;
   }
 
   return (
@@ -212,9 +209,7 @@ export default function ExploreCarsPage() {
 
         {/* loading spinner for filtering */}
         {loading ? (
-          <div className="flex items-center justify-center py-20">
-            <div className="w-10 h-10 border-4 border-white/10 border-t-orange-500 rounded-full animate-spin" />
-          </div>
+          <Loading />
         ) : cars.length === 0 ? (
           <div className="bg-[#0c0c0c] border border-neutral-800 p-20 text-center shadow-xl">
             <span className="material-symbols-outlined text-6xl text-neutral-600 mb-4 block">

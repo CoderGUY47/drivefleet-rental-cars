@@ -7,6 +7,7 @@ import Image from "next/image";
 import { TextField, Label, Input, Form } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
+import Loading from "@/app/loading";
 
 export default function AddCar() {
   const router = useRouter();
@@ -69,16 +70,12 @@ export default function AddCar() {
     "block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5";
 
   if (checkingAuth) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-black">
-        <div className="w-12 h-12 border-4 border-white/10 border-t-orange-500 rounded-full animate-spin" />
-      </div>
-    );
+    return <Loading />;
   }
 
   if (!currentUser) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black p-6">
+      <div className="min-h-screen flex items-center justify-center bg-black p-6 keep-dark light-white-bg">
         <div className="max-w-md w-full bg-[#0c0c0c] shadow-2xl text-center p-10 relative border border-neutral-800 rounded-none">
           <div className="absolute top-0 left-0 w-full h-1 bg-orange-500" />
           <span className="material-symbols-outlined text-6xl text-orange-500/80 mb-4 block">
@@ -102,7 +99,7 @@ export default function AddCar() {
   }
 
   return (
-    <div className="min-h-screen bg-black pb-20">
+    <div className="min-h-screen bg-black pb-20 keep-dark light-white-bg">
       {/* premium hero banner with background car image */}
       <div className="relative h-80 bg-black flex items-center justify-center overflow-hidden">
         <Image

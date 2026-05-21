@@ -9,6 +9,7 @@ import { authClient } from "@/lib/auth-client";
 import { FaBangladeshiTakaSign, FaPen, FaTrashCan } from "react-icons/fa6";
 import { FiMapPin, FiCheckCircle, FiXCircle } from "react-icons/fi";
 import AnimatedButton from "@/components/AnimatedButton";
+import Loading from "@/app/loading";
 
 export default function MyAddedCarsPage() {
   const router = useRouter();
@@ -156,15 +157,11 @@ export default function MyAddedCarsPage() {
   };
 
   if (checkingAuth || loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-black">
-        <div className="w-12 h-12 border-4 border-white/10 border-t-orange-500 rounded-full animate-spin" />
-      </div>
-    );
+    return <Loading />;
   }
 
   return (
-    <div className="min-h-screen bg-black text-white pb-20 pt-32">
+    <div className="min-h-screen bg-black text-white pb-20 pt-32 keep-dark light-white-bg">
       <div className="max-w-[90%] mx-auto px-6">
         {/* page header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-l-4 border-orange-500 pl-4 mb-12 gap-4">

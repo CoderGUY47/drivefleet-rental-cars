@@ -68,7 +68,7 @@ export default async function MyBookingsPage() {
   );
 
   return (
-    <div className="min-h-screen bg-black pb-20">
+    <div className="min-h-screen bg-black pb-20 keep-dark light-white-bg">
       {/* premium background hero banner layout */}
       <div className="relative h-80 bg-black flex items-center justify-center overflow-hidden keep-dark">
         <Image
