@@ -1,59 +1,109 @@
+"use client";
+
+import React, { useEffect, useState } from "react";
 import CarCard from "@/components/CarCard";
-import React from "react";
-import { redirect } from "next/navigation";
-import { headers } from "next/headers";
-import { auth } from "@/lib/auth";
+import { useRouter, useSearchParams } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
 
-export const dynamic = "force-dynamic";
+export default function ExploreCarsPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-const ExploreCarsPage = async ({ searchParams }) => {
-  // Resolve search parameters
-  const params = await searchParams;
-  const search = params?.search || "";
-  const category = params?.category || "";
+  // get initial search params from url
+  const initialSearch = searchParams.get("search") || "";
+  const initialCategory = searchParams.get("category") || "";
 
-  // Check if user is logged in
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+  const { data: session, isPending: checkingAuth } = authClient.useSession();
+  const currentUser = session?.user;
 
-  // Redirect to signin if not authenticated
-  if (!session) {
-    redirect("/signin");
-  }
+  const [search, setSearch] = useState(initialSearch);
+  const [category, setCategory] = useState(initialCategory || "All");
+  const [cars, setCars] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // Retrieve token
-  let token = "";
-  try {
-    const tokenRes = await auth.api.getToken({
-      headers: await headers(),
-    });
-    token = tokenRes?.token ?? "";
-  } catch {
-    token = "";
-  }
+  // fetch cars from api
+  const fetchCars = async (activeSearch, activeCategory) => {
+    try {
+      setLoading(true);
+      const { data: tokenData } = await authClient.token();
+      const token = tokenData?.token || "";
+      const apiUrl = process.env.NEXT_PUBLIC_SERVER_URL;
 
-  const apiUrl = process.env.NEXT_PUBLIC_SERVER_URL;
-  
-  // Construct dynamic query
-  const queryParams = new URLSearchParams();
-  if (search) queryParams.append("search", search);
-  if (category && category !== "All") queryParams.append("category", category);
+      const queryParams = new URLSearchParams();
+      // make search lowercase for matching
+      if (activeSearch) {
+        queryParams.append("search", activeSearch.toLowerCase());
+      }
+      if (activeCategory && activeCategory !== "All") {
+        queryParams.append("category", activeCategory);
+      }
 
-  const res = await fetch(`${apiUrl}/cars?${queryParams.toString()}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    cache: "no-store",
-  });
+      const res = await fetch(`${apiUrl}/cars?${queryParams.toString()}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        cache: "no-store",
+      });
 
-  const cars = res.ok ? await res.json() : [];
+      if (res.ok) {
+        const data = await res.json();
+        setCars(data);
+      } else {
+        setCars([]);
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to load vehicles.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // check if user is logged in
+  useEffect(() => {
+    if (!checkingAuth && !currentUser) {
+      router.push("/signin");
+    }
+  }, [currentUser, checkingAuth, router]);
+
+  // load cars on first run or when url changes
+  useEffect(() => {
+    if (currentUser) {
+      fetchCars(initialSearch, initialCategory);
+    }
+  }, [currentUser, initialSearch, initialCategory]);
+
+  const handleApplyFilters = (e) => {
+    if (e) e.preventDefault();
+    // update url parameters without reloading page
+    const params = new URLSearchParams();
+    if (search) params.append("search", search.toLowerCase());
+    if (category && category !== "All") params.append("category", category);
+    
+    router.push(`/explore-cars?${params.toString()}`, { scroll: false });
+  };
+
+  const handleReset = (e) => {
+    if (e) e.preventDefault();
+    setSearch("");
+    setCategory("All");
+    router.push("/explore-cars", { scroll: false });
+  };
 
   const categories = ["All", "Sedan", "SUV", "Electric", "Luxury"];
 
+  if (checkingAuth || (!currentUser && !checkingAuth)) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-black">
+        <div className="w-12 h-12 border-4 border-white/10 border-t-orange-500 rounded-full animate-spin" />
+      </div>
+    );
+  }
+
   return (
     <div className="w-full bg-black min-h-screen text-white pb-20">
-      {/* Hero Banner Section */}
+      {/* hero banner section */}
       <div className="relative h-96 flex items-center bg-black border-b border-neutral-900">
         <div className="absolute inset-0 overflow-hidden">
           <img
@@ -72,12 +122,12 @@ const ExploreCarsPage = async ({ searchParams }) => {
         </div>
       </div>
 
-      {/* Main Content Area */}
+      {/* main content area */}
       <div className="min-h-screen px-6 py-14 max-w-[90%] mx-auto">
-        {/* Search & Filter Form Panel */}
+        {/* search and filter panel */}
         <div className="bg-[#0c0c0c] border border-neutral-800 p-6 mb-12 rounded-none shadow-2xl">
-          <form method="GET" action="/explore-cars" className="flex flex-col lg:flex-row gap-6 items-end">
-            {/* Search Input Box */}
+          <form onSubmit={handleApplyFilters} className="flex flex-col lg:flex-row gap-6 items-end">
+            {/* search input box */}
             <div className="flex-1 w-full">
               <label htmlFor="search" className="block text-[10px] font-bold uppercase tracking-widest text-neutral-500 mb-2">
                 Search By Name
@@ -85,14 +135,14 @@ const ExploreCarsPage = async ({ searchParams }) => {
               <input
                 id="search"
                 type="text"
-                name="search"
-                defaultValue={search}
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search your car for rent..."
                 className="w-full bg-neutral-900 border border-neutral-800 px-4 py-3 text-sm focus:outline-none focus:border-orange-500 transition-colors text-white placeholder-neutral-600 rounded-none"
               />
             </div>
 
-            {/* Category Dropdown */}
+            {/* category dropdown */}
             <div className="w-full lg:w-72">
               <label htmlFor="category" className="block text-[10px] font-bold uppercase tracking-widest text-neutral-500 mb-2">
                 Car Category / Type
@@ -100,8 +150,8 @@ const ExploreCarsPage = async ({ searchParams }) => {
               <div className="relative">
                 <select
                   id="category"
-                  name="category"
-                  defaultValue={category}
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
                   className="w-full bg-[#0c0c0c] border border-neutral-800 pl-4 pr-10 py-3 text-sm focus:outline-none focus:border-orange-500 transition-colors text-white rounded-none appearance-none cursor-pointer"
                 >
                   {categories.map((cat) => (
@@ -129,7 +179,7 @@ const ExploreCarsPage = async ({ searchParams }) => {
               </div>
             </div>
 
-            {/* Filter Buttons */}
+            {/* filter buttons */}
             <div className="flex gap-3 w-full lg:w-auto">
               <button
                 type="submit"
@@ -137,19 +187,24 @@ const ExploreCarsPage = async ({ searchParams }) => {
               >
                 Apply Filters
               </button>
-              <a
-                href="/explore-cars"
+              <button
+                type="button"
+                onClick={handleReset}
                 className="flex-1 lg:flex-none px-6 py-3.5 border border-neutral-800 hover:bg-neutral-950 text-neutral-300 text-xs font-bold uppercase tracking-widest text-center transition-colors rounded-none"
               >
                 Reset
-              </a>
+              </button>
             </div>
 
           </form>
         </div>
 
-        {/* Cars List Grid */}
-        {cars.length === 0 ? (
+        {/* loading spinner for filtering */}
+        {loading ? (
+          <div className="flex items-center justify-center py-20">
+            <div className="w-10 h-10 border-4 border-white/10 border-t-orange-500 rounded-full animate-spin" />
+          </div>
+        ) : cars.length === 0 ? (
           <div className="bg-[#0c0c0c] border border-neutral-800 p-20 text-center shadow-xl">
             <span className="material-symbols-outlined text-6xl text-neutral-600 mb-4 block">
               search_off
@@ -179,6 +234,4 @@ const ExploreCarsPage = async ({ searchParams }) => {
       </div>
     </div>
   );
-};
-
-export default ExploreCarsPage;
+}
