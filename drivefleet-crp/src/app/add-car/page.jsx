@@ -75,8 +75,8 @@ export default function AddCar() {
 
   if (!currentUser) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black p-6 keep-dark light-white-bg">
-        <div className="max-w-md w-full bg-[#0c0c0c] shadow-2xl text-center p-10 relative border border-neutral-800 rounded-none">
+      <div className="min-h-screen flex items-center justify-center bg-black p-6 light-white-bg">
+        <div className="max-w-md w-full bg-[#0c0c0c] shadow-2xl text-center p-10 relative border border-neutral-800 rounded-none keep-dark-card">
           <div className="absolute top-0 left-0 w-full h-1 bg-orange-500" />
           <span className="material-symbols-outlined text-6xl text-orange-500/80 mb-4 block">
             lock
@@ -99,7 +99,7 @@ export default function AddCar() {
   }
 
   return (
-    <div className="min-h-screen bg-black pb-20 keep-dark light-white-bg">
+    <div className="min-h-screen bg-black pb-20 light-white-bg">
       {/* premium hero banner with background car image */}
       <div className="relative h-80 bg-black flex items-center justify-center overflow-hidden">
         <Image
@@ -121,7 +121,7 @@ export default function AddCar() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* left sidebar containing guide tips and advice */}
           <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
-            <div className="bg-black border border-neutral-800 rounded-none overflow-hidden shadow-2xl">
+            <div className="bg-black border border-neutral-800 rounded-none overflow-hidden shadow-2xl keep-dark-card">
               <div className="h-48 relative bg-neutral-900">
                 <Image
                   src="/assets/vecteezy_sport-car-model-photo_26175422.jpg"
@@ -167,7 +167,7 @@ export default function AddCar() {
           </div>
 
           {/* right side form container card to add a new car */}
-          <div className="lg:col-span-8 bg-[#0c0c0c] shadow-2xl relative rounded-none border border-neutral-800">
+          <div className="lg:col-span-8 bg-[#0c0c0c] shadow-2xl relative rounded-none border border-neutral-800 keep-dark-card">
             <div className="h-1 w-full bg-orange-500" />
             <div className="p-8 md:p-10">
               <form onSubmit={handleSubmit} className="space-y-6">

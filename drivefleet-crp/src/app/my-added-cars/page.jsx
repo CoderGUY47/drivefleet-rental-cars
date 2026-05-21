@@ -161,7 +161,7 @@ export default function MyAddedCarsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white pb-20 pt-32 keep-dark light-white-bg">
+    <div className="min-h-screen bg-black text-white pb-20 pt-32 light-white-bg">
       <div className="max-w-[90%] mx-auto px-6">
         {/* page header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-l-4 border-orange-500 pl-4 mb-12 gap-4">
