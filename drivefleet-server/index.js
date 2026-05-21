@@ -1,3 +1,4 @@
+// Role modification and profile administration
 // Reservation processing endpoints
 // Vehicles pagination and search query processing
 // JWKS authentication gatekeeper
