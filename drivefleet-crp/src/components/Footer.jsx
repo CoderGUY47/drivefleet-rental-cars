@@ -1,3 +1,4 @@
+// Modular site index footer and social directories
 "use client";
 
 import { Button } from "@heroui/react";
