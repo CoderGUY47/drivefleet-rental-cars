@@ -70,7 +70,7 @@ export default async function MyBookingsPage() {
   return (
     <div className="min-h-screen bg-black pb-20">
       {/* premium background hero banner layout */}
-      <div className="relative h-80 bg-black flex items-center justify-center overflow-hidden">
+      <div className="relative h-80 bg-black flex items-center justify-center overflow-hidden keep-dark">
         <Image
           src="/assets/vecteezy_two-classic-cars-on-black-background_31192356.jpg"
           alt="My Bookings hero"
@@ -98,7 +98,7 @@ export default async function MyBookingsPage() {
             </div>
 
             {/* overall bookings numerical summary panel */}
-            <div className="bg-[#0c0c0c] border border-neutral-800 shadow-2xl relative rounded-none">
+            <div className="bg-[#0c0c0c] border border-neutral-800 shadow-2xl relative rounded-none keep-dark-card">
               <div className="h-1 w-full bg-orange-500" />
               <div className="p-6 space-y-6">
                 <h3 className="text-base font-bold text-white uppercase tracking-wide pb-3 border-b border-neutral-800">
@@ -144,7 +144,7 @@ export default async function MyBookingsPage() {
         ) : (
           <div className="space-y-16">
             {/* empty state empty booking state section */}
-            <div className="w-[80%] mx-auto bg-[#0c0c0c] shadow-2xl relative overflow-hidden rounded-none border border-neutral-800">
+            <div className="w-[80%] mx-auto bg-[#0c0c0c] shadow-2xl relative overflow-hidden rounded-none border border-neutral-800 keep-dark-card">
               <div className="h-1 w-full bg-orange-500" />
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="relative h-48 md:h-auto min-h-[240px] bg-black">
@@ -201,7 +201,7 @@ export default async function MyBookingsPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* first recommended car catalog selection */}
-                <div className="bg-[#0c0c0c] border border-neutral-800 overflow-hidden rounded-none group hover:border-neutral-700 transition-all duration-300">
+                <div className="bg-[#0c0c0c] border border-neutral-800 overflow-hidden rounded-none group hover:border-neutral-700 transition-all duration-300 keep-dark-card">
                   <div className="h-40 bg-neutral-950 overflow-hidden relative">
                     <Image
                       src="/assets/vecteezy_sport-car-model-photo_26175422.jpg"
@@ -227,7 +227,7 @@ export default async function MyBookingsPage() {
                 </div>
 
                 {/* second recommended car catalog selection */}
-                <div className="bg-[#0c0c0c] border border-neutral-800 overflow-hidden rounded-none group hover:border-neutral-700 transition-all duration-300">
+                <div className="bg-[#0c0c0c] border border-neutral-800 overflow-hidden rounded-none group hover:border-neutral-700 transition-all duration-300 keep-dark-card">
                   <div className="h-40 bg-neutral-950 overflow-hidden relative">
                     <Image
                       src="/assets/steven-binotto-o6yH_yAc2Ws-unsplash.jpg"
@@ -253,7 +253,7 @@ export default async function MyBookingsPage() {
                 </div>
 
                 {/* third recommended car catalog selection */}
-                <div className="bg-[#0c0c0c] border border-neutral-800 overflow-hidden rounded-none group hover:border-neutral-700 transition-all duration-300">
+                <div className="bg-[#0c0c0c] border border-neutral-800 overflow-hidden rounded-none group hover:border-neutral-700 transition-all duration-300 keep-dark-card">
                   <div className="h-40 bg-neutral-950 overflow-hidden relative">
                     <Image
                       src="/assets/vecteezy_night-car-racing-illustration_24399512.jpg"

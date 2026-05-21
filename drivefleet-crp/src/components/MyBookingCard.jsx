@@ -51,7 +51,7 @@ export default function MyBookingCard({ booking }) {
   };
 
   return (
-    <div className="w-full bg-[#0c0c0c] shadow-2xl overflow-hidden flex flex-col md:flex-row relative border border-neutral-800 rounded-none">
+    <div className="w-full bg-[#0c0c0c] shadow-2xl overflow-hidden flex flex-col md:flex-row relative border border-neutral-800 rounded-none keep-dark-card">
       <div className="absolute top-4 right-4 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[#0c0c0c] z-10 bg-orange-500">
         Reserved
       </div>

@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { authClient } from "@/lib/auth-client";
 import { FaBangladeshiTakaSign, FaPen, FaTrashCan } from "react-icons/fa6";
 import { FiMapPin, FiCheckCircle, FiXCircle } from "react-icons/fi";
+import AnimatedButton from "@/components/AnimatedButton";
 
 export default function MyAddedCarsPage() {
   const router = useRouter();
@@ -175,16 +176,16 @@ export default function MyAddedCarsPage() {
               Manage your listed vehicles, update specifications, and check availability status.
             </p>
           </div>
-          <Link
-            href="/add-car"
-            className="px-6 py-3 font-bold text-sm uppercase tracking-widest text-black bg-orange-500 hover:opacity-95 transition-opacity rounded-none"
+          <AnimatedButton
+            onClick={() => router.push("/add-car")}
+            className="h-auto py-3 px-6 text-sm rounded-none"
           >
             Add New Car
-          </Link>
+          </AnimatedButton>
         </div>
 
         {cars.length === 0 ? (
-          <div className="bg-[#0c0c0c] border border-neutral-800 p-16 text-center shadow-2xl">
+          <div className="bg-[#0c0c0c] border border-neutral-800 p-16 text-center shadow-2xl keep-dark-card">
             <span className="material-symbols-outlined text-6xl text-neutral-600 mb-4 block">
               garage
             </span>
@@ -194,19 +195,19 @@ export default function MyAddedCarsPage() {
             <p className="text-sm text-neutral-400 max-w-md mx-auto mb-6">
               You haven't listed any cars for rent yet. Put your vehicle up for rent and start earning today!
             </p>
-            <Link
-              href="/add-car"
-              className="inline-block px-8 py-3 text-xs font-bold uppercase tracking-widest text-black bg-orange-500 hover:opacity-95 transition-opacity"
+            <AnimatedButton
+              onClick={() => router.push("/add-car")}
+              className="h-auto py-3 px-8 text-xs rounded-none"
             >
               Add Your First Car
-            </Link>
+            </AnimatedButton>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {cars.map((car) => (
               <div
                 key={car._id || car.id}
-                className="flex flex-col bg-[#0c0c0c] border border-neutral-800 p-4 relative group"
+                className="flex flex-col bg-[#0c0c0c] border border-neutral-800 p-4 relative group keep-dark-card"
               >
                 {/* image */}
                 <div className="relative h-48 w-full overflow-hidden mb-4">
@@ -297,7 +298,7 @@ export default function MyAddedCarsPage() {
       {/* edit vehicle modal */}
       {editingCar && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-          <div className="bg-[#0c0c0c] border border-neutral-800 w-full max-w-2xl overflow-hidden shadow-2xl relative">
+          <div className="bg-[#0c0c0c] border border-neutral-800 w-full max-w-2xl overflow-hidden shadow-2xl relative keep-dark-card">
             <div className="h-1 bg-orange-500 w-full" />
             <div className="p-6 md:p-8">
               <h2 className="text-2xl font-bold uppercase tracking-wider text-white mb-6 border-l-4 border-orange-500 pl-3">
@@ -440,7 +441,7 @@ export default function MyAddedCarsPage() {
       {/* delete confirmation modal */}
       {deletingCarId && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-          <div className="bg-[#0c0c0c] border border-neutral-800 w-full max-w-md overflow-hidden shadow-2xl relative">
+          <div className="bg-[#0c0c0c] border border-neutral-800 w-full max-w-md overflow-hidden shadow-2xl relative keep-dark-card">
             <div className="h-1 bg-red-500 w-full" />
             <div className="p-6 md:p-8">
               <h2 className="text-lg font-bold uppercase tracking-wider text-white mb-3">

@@ -14,7 +14,7 @@ export default function AboutUs() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* left side image with overlay statistics */}
           <div className="relative">
-            <div className="relative overflow-hidden border border-neutral-800 shadow-2xl">
+            <div className="relative overflow-hidden shadow-2xl">
               <Image
                 width={900}
                 height={480}
