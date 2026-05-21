@@ -1,0 +1,7 @@
+node_modules
+.env
+.vercel
+vercel-logs.json
+vercel-logs.txt
+
+.vercel
