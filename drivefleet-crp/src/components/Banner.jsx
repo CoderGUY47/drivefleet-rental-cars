@@ -1,3 +1,4 @@
+// Premium Hero Banner with interactive action buttons
 "use client";
 
 import { useRouter } from "next/navigation";
