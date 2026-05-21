@@ -304,10 +304,12 @@ html.light, html.light body {
 
 /* 1. KEEP DARK BACKGROUNDS AND LIGHT TEXT ON SPECIAL DECORATED SECTIONS & CUSTOM IMAGE CARDS */
 html.light .keep-dark,
-html.light .keep-dark *,
-html.light footer.bg-black,
-html.light footer.bg-black * {
+html.light footer.bg-black {
   background-color: #000000 !important;
+}
+
+html.light .keep-dark *,
+html.light footer.bg-black * {
   color: #ffffff !important;
 }
 
