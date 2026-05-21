@@ -1,3 +1,4 @@
+// UI component for displaying individual car listing
 "use client";
 
 import Link from "next/link";
