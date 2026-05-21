@@ -1,3 +1,4 @@
+// Root endpoint initialization
 // Initialization of Express gateway
 const express = require("express");
 const cors = require("cors");
