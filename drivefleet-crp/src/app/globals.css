@@ -353,29 +353,131 @@ html.light .keep-dark-card .text-orange-500 {
 }
 
 /* 2. LIGHT MODE GENERAL LAYOUT COMPONENT OVERRIDES (NAVBAR, CARDS, BACKGROUND SECTIONS, FORMS) */
+/* Glassmorphism Navbar in Light Theme */
 html.light nav.bg-black\/80 {
   background-color: #ffffff !important;
   border-bottom: 1px solid #e5e7eb !important;
 }
 
-html.light nav.bg-black\/80 *,
+/* Light Theme Navbar Text & Links */
 html.light nav.bg-black\/80 a,
-html.light nav.bg-black\/80 span {
+html.light nav.bg-black\/80 span,
+html.light nav.bg-black\/80 button:not(.absolute.right-0.top-full button) {
   color: #111827 !important;
 }
 
-html.light nav.bg-black\/80 a.text-orange-500 {
+/* Navbar Toggle button/hamburger */
+html.light nav.bg-black\/80 button {
+  color: #111827 !important;
+}
+
+/* Active links & Hover states inside Navbar */
+html.light nav.bg-black\/80 a.text-orange-500,
+html.light nav.bg-black\/80 a:hover,
+html.light nav.bg-black\/80 button:hover {
   color: #f97316 !important;
 }
 
-/* Mobile responsive navigation panel override */
+/* Make sure all children of buttons inside navbar inherit their parent's correct text/icon color */
+html.light nav.bg-black\/80 button * {
+  color: inherit !important;
+}
+
+/* Profile Dropdown Menu in Light Theme - Elegant Glassmorphism */
+html.light nav.bg-black\/80 .absolute.right-0.top-full {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Dropdown inner borders */
+html.light nav.bg-black\/80 .absolute.right-0.top-full .border-b,
+html.light nav.bg-black\/80 .absolute.right-0.top-full .border-t {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Dropdown header text colors */
+html.light nav.bg-black\/80 .absolute.right-0.top-full p.text-\[11px\] {
+  color: #6b7280 !important;
+}
+
+html.light nav.bg-black\/80 .absolute.right-0.top-full p.text-sm.font-bold {
+  color: #111827 !important;
+}
+
+/* Dropdown link items & button items */
+html.light nav.bg-black\/80 .absolute.right-0.top-full a,
+html.light nav.bg-black\/80 .absolute.right-0.top-full button {
+  color: #374151 !important;
+  background-color: transparent !important;
+}
+
+/* Dropdown Link/Button Hover */
+html.light nav.bg-black\/80 .absolute.right-0.top-full a:hover,
+html.light nav.bg-black\/80 .absolute.right-0.top-full button:hover {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+  color: #111827 !important;
+}
+
+/* Dropdown Icons */
+html.light nav.bg-black\/80 .absolute.right-0.top-full .text-orange-500 {
+  color: #f97316 !important;
+}
+
+/* Logout Button inside Dropdown */
+html.light nav.bg-black\/80 .absolute.right-0.top-full button.text-red-400 {
+  color: #ef4444 !important;
+}
+
+html.light nav.bg-black\/80 .absolute.right-0.top-full button.text-red-400:hover {
+  background-color: rgba(239, 68, 68, 0.05) !important;
+  color: #dc2626 !important;
+}
+
+/* Mobile responsive navigation panel override - Glassmorphic */
 html.light .md\:hidden.bg-black\/95 {
-  background-color: #ffffff !important;
-  border-top: 1px solid #e5e7eb !important;
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
 }
 
 html.light .md\:hidden.bg-black\/95 a {
-  color: #111827 !important;
+  color: #374151 !important;
+  border-bottom-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+html.light .md\:hidden.bg-black\/95 a.text-orange-500 {
+  color: #f97316 !important;
+}
+
+html.light .md\:hidden.bg-black\/95 a:hover {
+  color: #f97316 !important;
+}
+
+/* Mobile Login button border */
+html.light .md\:hidden.bg-black\/95 a[href="/signin"] {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light .md\:hidden.bg-black\/95 a[href="/signin"]:hover {
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  background-color: rgba(0, 0, 0, 0.02) !important;
+}
+
+/* Mobile Logout button */
+html.light .md\:hidden.bg-black\/95 button.text-red-500 {
+  color: #ef4444 !important;
+  background-color: rgba(239, 68, 68, 0.05) !important;
+  border: 1px solid rgba(239, 68, 68, 0.15) !important;
+}
+
+html.light .md\:hidden.bg-black\/95 button.text-red-500:hover {
+  background-color: rgba(239, 68, 68, 0.1) !important;
+  color: #dc2626 !important;
 }
 
 /* Turn body/content background pages from black to beautiful white */
