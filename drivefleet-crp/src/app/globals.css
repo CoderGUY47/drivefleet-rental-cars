@@ -337,14 +337,14 @@ html.light .min-h-screen.bg-black {
   background-color: #ffffff !important;
 }
 
-html.light h1:not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *),
-html.light h2:not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *),
-html.light h3:not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *),
-html.light h4:not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *),
-html.light h5:not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *),
-html.light h6:not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *),
-html.light p:not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *),
-html.light span:not(button *):not(.btn *):not(a *):not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *):not(.material-symbols-outlined) {
+html.light h1:not(footer *):not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *),
+html.light h2:not(footer *):not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *),
+html.light h3:not(footer *):not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *),
+html.light h4:not(footer *):not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *),
+html.light h5:not(footer *):not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *),
+html.light h6:not(footer *):not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *),
+html.light p:not(footer *):not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *),
+html.light span:not(button *):not(.btn *):not(a *):not(footer *):not(.keep-dark *):not(.keep-dark-card *):not(.keep-dark-section *):not(.material-symbols-outlined) {
   color: #111827 !important;
 }
 

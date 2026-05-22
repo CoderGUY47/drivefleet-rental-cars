@@ -44,46 +44,14 @@ export default function Footer() {
               high-performance mobility. Access the world's most elite vehicle
               fleet with DriveFleet.
             </p>
-            {/* social media icons */}
+            {/* social media connection icons */}
             <div className="flex gap-3 pt-2">
-              <a
-                href="https://www.facebook.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center text-xl text-white bg-orange-500/20 border border-orange-500 size-10 p-2 rounded-none hover:bg-orange-600 transition-colors duration-200"
-                aria-label="Facebook"
-              >
-                <FaFacebookF />
-              </a>
-              <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center text-xl text-white bg-orange-500/20 border border-orange-500 size-10 p-2 rounded-none hover:bg-orange-600 transition-colors duration-200"
-                aria-label="Instagram"
-              >
-                <FaInstagram />
-              </a>
-              <a
-                href="https://www.twitter.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center text-xl text-white bg-orange-500/20 border border-orange-500 size-10 p-2 rounded-none hover:bg-orange-600 transition-colors duration-200"
-                aria-label="X (Twitter)"
-              >
-                <FaXTwitter />
-              </a>
-              <a
-                href="https://www.linkedin.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center text-xl text-white bg-orange-500/20 border border-orange-500 size-10 p-2 rounded-none hover:bg-orange-600 transition-colors duration-200"
-                aria-label="LinkedIn"
-              >
-                <FaLinkedinIn />
-              </a>
+              <FaFacebookF href="https://www.facebook.com/" className="text-xl text-white bg-orange-500/20 border border-orange-500 size-10 p-2 rounded-none hover:bg-orange-600 transition-colors duration-200" />
+              <FaInstagram href="https://www.instagram.com/" className="text-xl text-white bg-orange-500/20 border border-orange-500 size-10 p-2 rounded-none hover:bg-orange-600 transition-colors duration-200" />
+              <FaXTwitter href="https://www.twitter.com/" className="text-xl text-white bg-orange-500/20 border border-orange-500 size-10 p-2 rounded-none hover:bg-orange-600 transition-colors duration-200" />
+              <FaLinkedinIn href="https://www.linkedin.com/" className="text-xl text-white bg-orange-500/20 border border-orange-500 size-10 p-2 rounded-none hover:bg-orange-600 transition-colors duration-200" />
             </div>
-          </div> 
+          </div>
 
           <div className="w-full lg:w-[20%] space-y-6">
             <h4 className="text-white font-bold text-base uppercase tracking-widest relative pb-2 border-b border-orange-500 inline-block">
