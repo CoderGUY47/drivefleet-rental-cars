@@ -67,10 +67,10 @@ Traditional online car rentals are slow, lack robust modern authentication, suff
 <table>
   <tr>
     <td width="50%">
-      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=880&h=495&auto=format&fit=crop" alt="DriveFleet Preview 1" width="100%" style="border-radius:8px;aspect-ratio:16/9;object-fit:cover" />
+      <img src="./drivefleet-crp/public/assets/screenshot_1.png" alt="DriveFleet Hero Preview" width="100%" style="border-radius:8px;aspect-ratio:16/9;object-fit:cover" />
     </td>
     <td width="50%">
-      <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=880&h=495&auto=format&fit=crop" alt="DriveFleet Preview 2" width="100%" style="border-radius:8px;aspect-ratio:16/9;object-fit:cover" />
+      <img src="./drivefleet-crp/public/assets/screenshot_2.png" alt="DriveFleet Customer Experiences Preview" width="100%" style="border-radius:8px;aspect-ratio:16/9;object-fit:cover" />
     </td>
   </tr>
   <tr>
